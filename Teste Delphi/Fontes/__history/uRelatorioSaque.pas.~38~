@@ -1,0 +1,69 @@
+unit uRelatorioSaque;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+
+type
+  TFrmRelatorioSaque = class(TFrame)
+    Memo: TMemo;
+    BtnRetornar: TButton;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+implementation
+
+uses uFormPrincipal;
+
+{$R *.dfm}
+
+procedure TFrmRelatorioSaque.Button1Click(Sender: TObject);
+var
+List :TStringList;
+Pivo,Atual,I,i2:integer;
+begin
+  List := TStringList.Create;
+  List.Add('100');
+  List.Add('2');
+  List.Add('200');
+  List.Add('322');
+  List.Add('5');
+  List.Add('60');
+  List.Add('1');
+
+
+  i := 0;
+  while I <= List.Count-1 do begin
+    Pivo := strtoint(List[i]);
+    for I2 := 0 to List.Count-1  do begin
+      if i2 <> i then begin
+        Atual := strtoint( List[i2]);
+        if Atual > Pivo then begin
+            List[i]   := inttostr(atual);
+            List[i2]  := inttostr(pivo);
+            i := 0;
+            break;
+        end;
+      end;
+
+
+    end;
+
+    inc(i);
+
+  end;
+
+
+
+     Memo.Text := List.Text;
+
+end;
+
+end.
